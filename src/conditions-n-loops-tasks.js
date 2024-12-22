@@ -106,8 +106,13 @@ function canQueenCaptureKing(queen, king) {
  *  2, 2, 5   => false
  *  3, 0, 3   => false
  */
-function isIsoscelesTriangle(/* a, b, c */) {
-  throw new Error('Not implemented');
+function isIsoscelesTriangle(a, b, c) {
+  if (a + b > c && a + c > b && c + b > a) {
+    if (a === b || a === c || b === c) {
+      return true;
+    }
+  }
+  return false;
 }
 
 /**
@@ -124,8 +129,43 @@ function isIsoscelesTriangle(/* a, b, c */) {
  *  10  => X
  *  26  => XXVI
  */
-function convertToRomanNumerals(/* num */) {
-  throw new Error('Not implemented');
+function convertToRomanNumerals(num) {
+  let romanNumeral = '';
+  let arabianNumeral = num;
+  while (arabianNumeral > 0) {
+    if (arabianNumeral >= 10) {
+      romanNumeral += 'X';
+      arabianNumeral -= 10;
+    } else if (arabianNumeral >= 9) {
+      romanNumeral += 'IX';
+      arabianNumeral -= 9;
+    } else if (arabianNumeral >= 8) {
+      romanNumeral += 'VIII';
+      arabianNumeral -= 8;
+    } else if (arabianNumeral >= 7) {
+      romanNumeral += 'VII';
+      arabianNumeral -= 7;
+    } else if (arabianNumeral >= 6) {
+      romanNumeral += 'VI';
+      arabianNumeral -= 6;
+    } else if (arabianNumeral >= 5) {
+      romanNumeral += 'V';
+      arabianNumeral -= 5;
+    } else if (arabianNumeral >= 4) {
+      romanNumeral += 'IV';
+      arabianNumeral -= 4;
+    } else if (arabianNumeral >= 3) {
+      romanNumeral += 'III';
+      arabianNumeral -= 3;
+    } else if (arabianNumeral >= 2) {
+      romanNumeral += 'II';
+      arabianNumeral -= 2;
+    } else if (arabianNumeral >= 1) {
+      romanNumeral += 'I';
+      arabianNumeral -= 1;
+    }
+  }
+  return romanNumeral;
 }
 
 /**
@@ -143,8 +183,57 @@ function convertToRomanNumerals(/* num */) {
  *  '10,5'    => 'one zero point five'
  *  '1950.2'  => 'one nine five zero point two'
  */
-function convertNumberToString(/* numberStr */) {
-  throw new Error('Not implemented');
+function convertNumberToString(numberStr) {
+  let string = '';
+  for (let i = 0; i < numberStr.length; i += 1) {
+    if (i < numberStr.length && i > 0) {
+      string += ' ';
+    }
+    switch (numberStr[i]) {
+      case '0':
+        string += 'zero';
+        break;
+      case '1':
+        string += 'one';
+        break;
+      case '2':
+        string += 'two';
+        break;
+      case '3':
+        string += 'three';
+        break;
+      case '4':
+        string += 'four';
+        break;
+      case '5':
+        string += 'five';
+        break;
+      case '6':
+        string += 'six';
+        break;
+      case '7':
+        string += 'seven';
+        break;
+      case '8':
+        string += 'eight';
+        break;
+      case '9':
+        string += 'nine';
+        break;
+      case '-':
+        string += 'minus';
+        break;
+      case '.':
+        string += 'point';
+        break;
+      case ',':
+        string += 'point';
+        break;
+      default:
+        break;
+    }
+  }
+  return string;
 }
 
 /**
